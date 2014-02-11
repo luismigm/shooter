@@ -16,10 +16,6 @@
       this.titleTxt = this.add.bitmapText(x, y, 'High Score', {font: '16px minecraftia', align: 'center'});
       this.titleTxt.anchor.setTo(0.5, 0.5);
 
-      y = y + this.titleTxt.height + 5;
-      this.startTxt = this.add.bitmapText(x, y, 'Score1', {font: '12px minecraftia', align: 'center'});
-      this.startTxt.anchor.setTo(0.5, 0.5);
-
       this.myButton = this.add.button(this.world.centerX - 95, 400, 'return_button', function() { this.game.state.start('menu') }, this);
     },
 

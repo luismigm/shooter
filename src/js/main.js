@@ -4,7 +4,7 @@ window.onload = function () {
   var game
     , ns = window['shooter'];
 
-  game = new Phaser.Game(640, 480, Phaser.AUTO, 'shooter-game');
+  game = new Phaser.Game(600, 800, Phaser.AUTO, 'shooter-game');
   game.state.add('boot', ns.Boot);
   game.state.add('preloader', ns.Preloader);
   game.state.add('menu', ns.Menu);
@@ -13,6 +13,5 @@ window.onload = function () {
   game.state.add('options', ns.Options);
   game.state.add('start', ns.Start);
   game.state.add('game', ns.Game);
-
   game.state.start('boot');
 };
