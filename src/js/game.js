@@ -10,6 +10,7 @@
     this.rightKey = null;
     this.bullets = null;
     this.bulletTime = 0;
+    this.alien = null;
   }
 
   Game.prototype = {
@@ -19,6 +20,7 @@
         , y = this.game.height / 2;
 
       this.player = this.add.sprite(x, y, 'nave');
+      this.alien = this.add.sprite(100,100, 'alien');
       this.player.anchor.setTo(0.5, 0.5);
       //this.input.onDown.add(this.onInputDown, this);
       
@@ -32,11 +34,19 @@
 
     //balas
     //  Our bullet group
-    this.bullets = this.add.group();
+     this.bullets = this.add.group();
     this.bullets.createMultiple(5, 'bullet');
     this.bullets.setAll('anchor.x', 0.5);
     this.bullets.setAll('anchor.y', 1);
     this.bullets.setAll('outOfBoundsKill', true);
+     /*  for (var i = 0; i < 10; i++)
+      {
+          var b = this.bullets.create(0, 0, 'bullet');
+          b.name = 'bullet' + i;
+          b.exists = false;
+          b.visible = false;
+          b.events.onOutOfBounds.add(resetBullet, this);
+      }*/
     },
 
     update: function () {
@@ -44,7 +54,7 @@
       {
           if(this.player.y>30)
           {
-             this.player.y-=4;
+             this.player.y -= 4;
           }
          
       }
@@ -52,27 +62,28 @@
       {
           if(this.player.y<770)
           {
-             this.player.y+=4;
+             this.player.y += 4;
           }
       }
       if (this.leftKey.isDown)
       {
           if(this.player.x>30)
           {
-             this.player.x-=4;
+             this.player.x -= 4;
           }
       }
       if (this.rightKey.isDown)
       {
           if(this.player.x<570)
           {
-             this.player.x+=4;
+             this.player.x += 4;
           }
       }
       if (this.spaceBar.isDown)
       {
          this.fireBullet();
       }
+      this.physics.overlap(this.bullets, this.alien, function (bullet, alien) {  bullet.kill(); alien.kill(); }, null, this);
     },
 
    fireBullet: function () 
@@ -92,6 +103,21 @@
           }
       } 
     }
+    //  Called if the bullet goes out of the screen
+/* resetBullet: function (bullet) {
+
+    bullet.kill();
+
+}*/
+
+//  Called if the bullet hits one of the veg sprites
+/*collisionHandler: function (bullet, alien) {
+
+    bullet.kill();
+    alien.kill();
+
+}*/
+
 
   };
 

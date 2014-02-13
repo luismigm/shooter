@@ -16,6 +16,7 @@
       this.load.setPreloadSprite(this.asset);
       this.load.image('bullet', 'assets/bullet.png');
       this.load.image('nave', 'assets/nave.png');
+      this.load.image('alien', 'assets/alien.png');
       this.load.spritesheet('highScore_button', 'assets/high_score_sprite.png', 193, 71);
       this.load.spritesheet('start_button', 'assets/start_sprite.png', 193, 71);
       this.load.spritesheet('credits_button', 'assets/credits_sprite.png', 193, 71);
