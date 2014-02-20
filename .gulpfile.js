@@ -12,7 +12,6 @@
     "gulp": "*",
     "gulp-util": "*",
     "gulp-concat": "*",
-    "gulp-download": "*",
     "gulp-rename": "*",
     "gulp-minify-css": "*",
     "gulp-minify-html": "*",

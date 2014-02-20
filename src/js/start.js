@@ -15,9 +15,9 @@
       var x = this.game.width / 2
         , y = this.game.height / 2;
 
-      this.myButton = this.add.button(this.world.centerX - 95, 200, 'newGame_button', function() { this.game.state.start('game') }, this);
-      this.myButton = this.add.button(this.world.centerX - 95, 300, 'options_button', function() { this.game.state.start('options') }, this);
-      this.myButton = this.add.button(this.world.centerX - 95, 400, 'return_button', function() { this.game.state.start('menu') }, this);
+      this.myButton = this.add.button(200, 200, 'newGame_button', function() { this.game.state.start('game') }, this);
+      this.myButton = this.add.button(200, 300, 'options_button', function() { this.game.state.start('options') }, this);
+      this.myButton = this.add.button(200, 400, 'return_button', function() { this.game.state.start('menu') }, this);
 
       //this.input.onDown.add(this.onDown, this);
     },
