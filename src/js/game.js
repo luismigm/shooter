@@ -11,8 +11,9 @@
     this.bullets = null;
     this.aliens = null;
     this.bulletTime = 0;
-    this.alien = null;
+    this.aliens = null;
     this.enemigos = null;
+    this.moveEnemys = null;
   }
 
   Game.prototype = {
@@ -22,13 +23,7 @@
         , y = this.game.height / 2;
 
       this.player = this.add.sprite(x, y, 'nave');
-      this.alien = this.add.sprite(100,100, 'alien');
-      this.alien.scale.x=0.5;
-      this.alien.scale.y=0.5;
-      this.alien2 = this.add.sprite(100,200, 'alien2');
-      this.alien.scale.x=0.6;
-      this.alien.scale.y=0.6;
-      this.player.anchor.setTo(0.5, 0.5);
+
       //this.input.onDown.add(this.onInputDown, this);
       
       //  In this example we'll create 4 specific keys (up, down, left, right) and monitor them in our update function
@@ -96,7 +91,9 @@
               this.enemigos.reset(Math.random()*560, 0);
               this.enemigos.body.velocity.y = 400;
               this.enemigos.body.velocity.x = 100;
+
         }
+        this.physics.overlap(this.bullets, this.aliens, function (bullet, enemigos) {  bullet.kill(); enemigos.kill(); }, null, this);
 
     },
 
