@@ -19,7 +19,7 @@
       this.principal_background = this.add.sprite(0, 0, 'principal_background');
 
       this.myButton = this.add.button(200, 275, 'newGame_button', function() { this.game.state.start('game') }, this);
-      this.myButton = this.add.button(200, 375, 'options_button', function() { this.game.state.start('options') }, this);
+      
       this.myButton = this.add.button(200, 475, 'return_button', function() { this.game.state.start('menu') }, this);
 
       //this.input.onDown.add(this.onDown, this);
