@@ -6,6 +6,7 @@
     this.startTxt = null;
     this.highScoreTxt = null;
     this.myButton=null;
+    this.credits = null;
 
   }
 
@@ -14,6 +15,8 @@
     create: function () {
       var x = this.game.width / 2
         , y = this.game.height / 2;
+
+      this.credits = this.add.sprite(0, 0, 'credits_background');
 
       this.titleTxt = this.add.bitmapText(x, y, 'Credits', {font: '16px minecraftia', align: 'center'});
       this.titleTxt.anchor.setTo(0.5, 0.5);

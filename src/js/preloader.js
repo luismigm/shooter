@@ -17,6 +17,7 @@
       this.load.image('principal_background', 'assets/principal_background.png');
       this.load.image('options_background', 'assets/options_background.png');
       this.load.image('high_score_background', 'assets/high_score_background.png');
+      this.load.image('credits_background', 'assets/credits_background.png');
       this.load.image('bullet', 'assets/bullet.png');
       this.load.image('nave', 'assets/nave.png');
       this.load.image('nave2', 'assets/nave.png');
