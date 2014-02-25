@@ -95,6 +95,7 @@
               //  And fire it
               this.enemigos.reset(Math.random()*560, 0);
               this.enemigos.body.velocity.y = 400;
+              this.enemigos.body.velocity.x = 100;
         }
 
     },
