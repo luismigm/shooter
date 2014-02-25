@@ -18,7 +18,7 @@
       this.titleTxt = this.add.bitmapText(x, y, 'Options', {font: '16px minecraftia', align: 'center'});
       this.titleTxt.anchor.setTo(0.5, 0.5);
 
-  
+      alert(window.shooter.myGlobal.variable1);
       this.myButton = this.add.button(this.world.centerX - 95, 500, 'return_button', function() { this.game.state.start('start') }, this, 0, 1, 0);
 
       //this.input.onDown.add(this.onDown, this);
