@@ -14,6 +14,11 @@
     this.aliens = null;
     this.enemigos = null;
     this.moveEnemys = null;
+    this.numberLives = 3;
+    this.score = 0;
+    this.scoreText = null;
+    this.lives = null;
+    this.ship = null;
   }
 
   Game.prototype = {
@@ -46,12 +51,26 @@
     this.aliens.createMultiple(5, 'alien2');
     this.aliens.setAll('outOfBoundsKill', true);
 
+    this.scoreText = this.add.text(32, 32, 'SCORE: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
+    this.livesText = this.add.text(400, 32, 'lives: ', { font: "20px Arial", fill: "#ffffff", align: "left" });
+    this.lives = this.add.group();
+
+     for (var i = 0; i < 3; i++) 
+    {
+        this.ship = this.lives.create(470 + (45 * i), 45, 'nave2');
+        this.ship.anchor.setTo(0.5, 0.5);
+        this.ship.angle = 90;
+        this.ship.alpha = 0.7;
+    }
+
+
+
     },
 
     update: function () {
      if (this.upKey.isDown)
       {
-          if(this.player.y>30)
+          if(this.player.y>70)
           {
              this.player.y -= 4;
           }
@@ -82,8 +101,7 @@
       {
          this.fireBullet();
       }
-      this.physics.overlap(this.bullets, this.alien, function (bullet, alien) {  bullet.kill(); alien.kill(); }, null, this);
-      this.physics.overlap(this.bullets, this.alien2, function (bullet, alien) {  bullet.kill(); alien.kill(); }, null, this);
+
       this.enemigos = this.aliens.getFirstExists(false);
       if (this.enemigos)
           {
@@ -93,7 +111,15 @@
               this.enemigos.body.velocity.x = 100;
 
         }
-        this.physics.overlap(this.bullets, this.aliens, function (bullet, enemigos) {  bullet.kill(); enemigos.kill(); }, null, this);
+        this.physics.overlap(this.bullets, this.aliens, function (bullet, enemigos) {  bullet.kill(); enemigos.kill(); this.score += 10; this.scoreText.content = 'SCORE: ' + this.score;}, null, this);
+        this.physics.overlap(this.player, this.aliens, function (player, enemy) {  
+        enemy.kill(); 
+        var live = this.lives.getFirstAlive();
+        if (live)
+        {
+            live.kill();
+        }
+      }, null, this);
 
     },
 
