@@ -5,7 +5,8 @@
     this.titleTxt = null;
     this.startTxt = null;
     this.highScoreTxt = null;
-    this.myButton=null;
+    this.myButton = null;
+    this.options_background = null;
 
   }
 
@@ -14,6 +15,9 @@
     create: function () {
       var x = this.game.width / 2
         , y = this.game.height / 2;
+
+      this.options_background = this.add.sprite(0, 0, 'options_background');
+
 
       this.titleTxt = this.add.bitmapText(x, y, 'Options', {font: '16px minecraftia', align: 'center'});
       this.titleTxt.anchor.setTo(0.5, 0.5);

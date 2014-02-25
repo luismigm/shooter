@@ -13,6 +13,8 @@
         , y = this.game.height / 2;
 
 
+      this.high_score_background = this.add.sprite(0, 0, 'high_score_background');
+
       this.titleTxt = this.add.bitmapText(x, y, 'High Score', {font: '16px minecraftia', align: 'center'});
       this.titleTxt.anchor.setTo(0.5, 0.5);
 
