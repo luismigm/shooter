@@ -12,6 +12,7 @@
     create: function () {
       this.game.input.maxPointers = 1;
       // this.game.stage.disableVisibilityChange = true;
+      window['shooter'].myGlobal = { variable1 : 9, variable2 : "hola" };
 
       if (this.game.device.desktop) {
         this.game.stage.scale.pageAlignHorizontally = true;
@@ -28,9 +29,8 @@
       this.game.state.start('preloader');
     }
   };
-
   window['shooter'] = window['shooter'] || {};
   window['shooter'].Boot = Boot;
-
+  window['shooter'].myGlobal= {};
 }());
 

@@ -9,8 +9,10 @@
     this.leftKey = null;
     this.rightKey = null;
     this.bullets = null;
+    this.aliens = null;
     this.bulletTime = 0;
     this.alien = null;
+    this.enemigos = null;
   }
 
   Game.prototype = {
@@ -21,6 +23,11 @@
 
       this.player = this.add.sprite(x, y, 'nave');
       this.alien = this.add.sprite(100,100, 'alien');
+      this.alien.scale.x=0.5;
+      this.alien.scale.y=0.5;
+      this.alien2 = this.add.sprite(100,200, 'alien2');
+      this.alien.scale.x=0.6;
+      this.alien.scale.y=0.6;
       this.player.anchor.setTo(0.5, 0.5);
       //this.input.onDown.add(this.onInputDown, this);
       
@@ -39,14 +46,11 @@
     this.bullets.setAll('anchor.x', 0.5);
     this.bullets.setAll('anchor.y', 1);
     this.bullets.setAll('outOfBoundsKill', true);
-     /*  for (var i = 0; i < 10; i++)
-      {
-          var b = this.bullets.create(0, 0, 'bullet');
-          b.name = 'bullet' + i;
-          b.exists = false;
-          b.visible = false;
-          b.events.onOutOfBounds.add(resetBullet, this);
-      }*/
+
+    this.aliens = this.add.group();
+    this.aliens.createMultiple(5, 'alien2');
+    this.aliens.setAll('outOfBoundsKill', true);
+
     },
 
     update: function () {
@@ -84,6 +88,15 @@
          this.fireBullet();
       }
       this.physics.overlap(this.bullets, this.alien, function (bullet, alien) {  bullet.kill(); alien.kill(); }, null, this);
+      this.physics.overlap(this.bullets, this.alien2, function (bullet, alien) {  bullet.kill(); alien.kill(); }, null, this);
+      this.enemigos = this.aliens.getFirstExists(false);
+      if (this.enemigos)
+          {
+              //  And fire it
+              this.enemigos.reset(Math.random()*560, 0);
+              this.enemigos.body.velocity.y = 400;
+        }
+
     },
 
    fireBullet: function () 
@@ -103,20 +116,7 @@
           }
       } 
     }
-    //  Called if the bullet goes out of the screen
-/* resetBullet: function (bullet) {
 
-    bullet.kill();
-
-}*/
-
-//  Called if the bullet hits one of the veg sprites
-/*collisionHandler: function (bullet, alien) {
-
-    bullet.kill();
-    alien.kill();
-
-}*/
 
 
   };
