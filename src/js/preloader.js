@@ -14,6 +14,7 @@
 
       this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
       this.load.setPreloadSprite(this.asset);
+      this.load.image('principal_background', 'assets/principal_background.png');
       this.load.image('bullet', 'assets/bullet.png');
       this.load.image('nave', 'assets/nave.png');
       this.load.image('alien', 'assets/alien.png');

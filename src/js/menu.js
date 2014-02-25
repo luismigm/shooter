@@ -5,6 +5,7 @@
     this.titleTxt = null;
     this.lineTxt = null;
     this.startButton=null;
+    this.principal_background = null;
 
   }
 
@@ -13,17 +14,22 @@
     create: function () {
       var x = this.game.width / 2
         , y = this.game.height / 2;
+      //Background
+      
+      this.principal_background = this.add.sprite(0, 0, 'principal_background');
 
+      //Tittle with text
+      /*
       this.titleTxt = this.add.bitmapText(x, 100, 'Alien Invasion', {font: '30px minecraftia', align: 'center'});
-      this.titleTxt.anchor.setTo(0.5, 0.5);
+      this.titleTxt.anchor.setTo(0.5, 0.5);*/
 
-     this.startButton = this.add.button(200, 200, 'start_button', function() { this.game.state.start('start') }, this, 0, 1, 0);
-      this.titleTxt.anchor.setTo(0.5, 0.5);
-      this.startButton = this.add.button(200, 300, 'highScore_button', function() { this.game.state.start('highScore') }, this, 0, 1, 0);
-       this.titleTxt.anchor.setTo(0.5, 0.5);
+      this.startButton = this.add.button(200, 275, 'start_button', function() { this.game.state.start('start') }, this, 0, 1, 0);
+      
+      this.startButton = this.add.button(200, 375, 'highScore_button', function() { this.game.state.start('highScore') }, this, 0, 1, 0);
+       
       //this.input.onDown.add(this.onDown, this);
-      this.startButton = this.add.button(200, 400, 'credits_button', function() { this.game.state.start('credits') }, this, 0, 1, 0);
-       this.titleTxt.anchor.setTo(0.5, 0.5);
+      this.startButton = this.add.button(200, 475, 'credits_button', function() { this.game.state.start('credits') }, this, 0, 1, 0);
+      
     },
 
     update: function () {
