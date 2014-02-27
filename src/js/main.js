@@ -11,6 +11,7 @@ window.onload = function () {
   game.state.add('highScore', ns.HighScore);
   game.state.add('credits', ns.Credits);
   game.state.add('options', ns.Options);
+  game.state.add('endGame', ns.EndGame);
   game.state.add('start', ns.Start);
   game.state.add('game', ns.Game);
   game.state.start('boot');

@@ -28,6 +28,7 @@
         , y = this.game.height / 2;
 
       this.player = this.add.sprite(x, y, 'nave');
+      this.player.health = 2;
 
       //this.input.onDown.add(this.onInputDown, this);
       
@@ -104,20 +105,68 @@
 
       this.enemigos = this.aliens.getFirstExists(false);
       if (this.enemigos)
-          {
-              //  And fire it
-              this.enemigos.reset(Math.random()*560, 0);
-              this.enemigos.body.velocity.y = 400;
-              this.enemigos.body.velocity.x = 100;
+      {
+        
+        var typeMov = Math.floor((Math.random()*10)+1);
+        switch (typeMov)
+        {
+          case 1: this.enemigos.reset(Math.random()*300, 0);
+                  this.enemigos.body.velocity.y = 400;
+                  this.enemigos.body.velocity.x = 200;
+                  break;
+          case 2: this.enemigos.reset(300 + (Math.random()*300), 0);
+                  this.enemigos.body.velocity.y = 400;
+                  this.enemigos.body.velocity.x = -200;
+                  break;
+          case 3: this.enemigos.reset(0, 100);
+                  this.enemigos.body.velocity.y = Math.floor(Math.random() * 201);
+                  this.enemigos.body.velocity.x = 200;
+                  break;
+          case 4: this.enemigos.reset(600, 100);
+                  this.enemigos.body.velocity.y = Math.floor(Math.random() * 201);
+                  this.enemigos.body.velocity.x = -200;
+                  break;
+          case 5: this.enemigos.reset(Math.random()*560, 0);
+                  this.enemigos.body.velocity.y = 400;
+                  this.enemigos.body.velocity.x = 200;
+                  break;
+          case 6: this.enemigos.reset(Math.random()*560, 0);
+                  this.enemigos.body.velocity.y = 400;
+                  this.enemigos.body.velocity.x = -200;
+                  break;
+          case 7: this.enemigos.reset(0, 400);
+                  this.enemigos.body.velocity.y = -400;
+                  this.enemigos.body.velocity.x = 200;
+                  break;
+          case 8: this.enemigos.reset(600, 400);
+                  this.enemigos.body.velocity.y = -400;
+                  this.enemigos.body.velocity.x = -200;
+                  break;
+          case 9: this.enemigos.reset(0, 300);
+                  this.enemigos.body.velocity.y = Math.floor(Math.random() * 201) - 100;
+                  this.enemigos.body.velocity.x = 200;
+                  break;
+          case 10: this.enemigos.reset(600, 300);
+                  this.enemigos.body.velocity.y = Math.floor(Math.random() * 201) - 100;
+                  this.enemigos.body.velocity.x = -200;
+                  break;
 
         }
-        this.physics.overlap(this.bullets, this.aliens, function (bullet, enemigos) {  bullet.kill(); enemigos.kill(); this.score += 10; this.scoreText.content = 'SCORE: ' + this.score;}, null, this);
-        this.physics.overlap(this.player, this.aliens, function (player, enemy) {  
+
+        
+      }
+      this.physics.overlap(this.bullets, this.aliens, function (bullet, enemigos) {  bullet.kill(); enemigos.kill(); this.score += 10; this.scoreText.content = 'SCORE: ' + this.score;}, null, this);
+      this.physics.overlap(this.player, this.aliens, function (player, enemy) {  
         enemy.kill(); 
         var live = this.lives.getFirstAlive();
         if (live)
         {
-            live.kill();
+          live.kill();
+          this.player.damage(1);
+        }
+        if (this.player.health < 0)
+        {
+            this.game.state.start('endGame');
         }
       }, null, this);
 
