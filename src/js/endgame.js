@@ -19,7 +19,7 @@
       this.titleTxt = this.add.bitmapText(x, y, 'EndGame', {font: '16px minecraftia', align: 'center'});
       this.titleTxt.anchor.setTo(0.5, 0.5);
 
-      this.myButton = this.add.button(200, 575, 'return_button', function() { this.game.state.start('menu') }, this);
+      this.myButton = this.add.button(200, 575, 'return_button', function() { this.game.state.start('menu') }, this, 1, 0, 0);
     },
 
     update: function () {
