@@ -25,14 +25,14 @@
 /*
       this.startButton = this.add.button(200, 275, 'start_button', function() { this.game.state.start('start') }, this, 0, 1, 0);*/
 
-      this.myButton = this.add.button(200, 275, 'newGame_button', function() { this.game.state.start('game') }, this);
+      this.myButton = this.add.button(200, 275, 'newGame_button', function() { this.game.state.start('game') }, this, 1, 0, 0);
 
-      this.startButton = this.add.button(200, 375, 'options_button', function() { this.game.state.start('options') }, this);
+      this.startButton = this.add.button(200, 375, 'options_button', function() { this.game.state.start('options') }, this, 1, 0, 0);
       
-      this.startButton = this.add.button(200, 475, 'highScore_button', function() { this.game.state.start('highScore') }, this, 0, 1, 0);
+      this.startButton = this.add.button(200, 475, 'highScore_button', function() { this.game.state.start('highScore') }, this, 1, 0, 0);
        
       //this.input.onDown.add(this.onDown, this);
-      this.startButton = this.add.button(200, 575, 'credits_button', function() { this.game.state.start('credits') }, this, 0, 1, 0);
+      this.startButton = this.add.button(200, 575, 'credits_button', function() { this.game.state.start('credits') }, this, 1, 0, 0);
       
     },
 
