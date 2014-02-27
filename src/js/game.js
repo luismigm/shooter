@@ -2,6 +2,7 @@
   'use strict';
 
   function Game() {
+    this.map = null;
     this.player = null;
     this.bullet = null;
     this.upKey = null;
@@ -26,6 +27,8 @@
     create: function () {
       var x = this.game.width / 2
         , y = this.game.height / 2;
+
+      this.map = this.add.tileSprite(0, 0, 600, 800, 'credits_background');  
 
       this.player = this.add.sprite(x, y, 'nave');
       this.player.health = 2;
@@ -69,6 +72,10 @@
     },
 
     update: function () {
+
+//Background 
+      this.map.tilePosition.y += 5;
+
      if (this.upKey.isDown)
       {
           if(this.player.y>70)
