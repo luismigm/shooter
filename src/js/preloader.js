@@ -28,7 +28,7 @@
       this.load.spritesheet('start_button', 'assets/start_sprite.png', 193, 71);
       this.load.spritesheet('credits_button', 'assets/credits_sprite.png', 193, 71);
       this.load.spritesheet('options_button', 'assets/options_sprite.png', 193, 71);
-      this.load.image('return_button', 'assets/back_arrow.png', 193, 71);
+      this.load.spritesheet('return_button', 'assets/back_arrow.png', 193, 71);
       this.load.spritesheet('newGame_button', 'assets/new_game_sprite.png', 193, 71);
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
     },
