@@ -28,7 +28,7 @@
       var x = this.game.width / 2
         , y = this.game.height / 2;
 
-      this.map = this.add.tileSprite(0, 0, 600, 800, 'credits_background');  
+      this.map = this.add.tileSprite(0, 0, 600, 2000, 'map_background');  
 
       this.player = this.add.sprite(x, y, 'nave');
       this.player.health = 2;
