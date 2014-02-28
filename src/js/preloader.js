@@ -27,6 +27,7 @@
       this.load.image('alien2', 'assets/alien2.png');
       this.load.spritesheet('nodriza', 'assets/nodriza.png', 118, 138);
       this.load.spritesheet('asteroids', 'assets/asteroids.png', 80, 80);
+      this.load.spritesheet('explosions', 'assets/explosions.png', 60, 60);
       this.load.spritesheet('highScore_button', 'assets/high_score_sprite.png', 193, 71);
       this.load.spritesheet('start_button', 'assets/start_sprite.png', 193, 71);
       this.load.spritesheet('credits_button', 'assets/credits_sprite.png', 193, 71);
