@@ -28,9 +28,10 @@
       var x = this.game.width / 2
         , y = this.game.height / 2;
 
-      this.map = this.add.tileSprite(0, 0, 600, 2000, 'map_background');  
+      this.map = this.add.tileSprite(0, 0, 600, 2835, 'map_background');  
 
       this.player = this.add.sprite(x, y, 'nave');
+      this.player.frame = 0;
       this.player.health = 2;
 
       //this.input.onDown.add(this.onInputDown, this);
@@ -78,14 +79,19 @@
 
      if (this.upKey.isDown)
       {
+        this.player.frame = 1;
           if(this.player.y>70)
           {
              this.player.y -= 4;
           }
          
       }
+      else{
+        this.player.frame = 0;
+      }
       if (this.downKey.isDown)
       {
+        this.player.frame = 0;
           if(this.player.y<770)
           {
              this.player.y += 4;
@@ -93,6 +99,7 @@
       }
       if (this.leftKey.isDown)
       {
+        this.player.frame = 0;
           if(this.player.x>30)
           {
              this.player.x -= 4;
@@ -100,6 +107,7 @@
       }
       if (this.rightKey.isDown)
       {
+        this.player.frame = 0;
           if(this.player.x<570)
           {
              this.player.x += 4;
