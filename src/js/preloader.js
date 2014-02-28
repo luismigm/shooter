@@ -24,7 +24,7 @@
       this.load.image('nave2', 'assets/nave.png');
       this.load.image('alien', 'assets/alien.png');
       this.load.image('alien2', 'assets/alien2.png');
-      this.load.spritesheet('nave', 'assets/nave.png', 40, 60);
+      this.load.spritesheet('nave', 'assets/nave.png', 45, 64);
       this.load.spritesheet('nodriza', 'assets/nodriza.png', 118, 138);
       this.load.spritesheet('asteroids', 'assets/asteroids.png', 80, 80);
       this.load.spritesheet('explosions', 'assets/explosions.png', 60, 60);
