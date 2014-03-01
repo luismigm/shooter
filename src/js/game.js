@@ -99,7 +99,7 @@
       }
       if (this.leftKey.isDown)
       {
-        this.player.frame = 0;
+        this.player.frame = 2;
           if(this.player.x>30)
           {
              this.player.x -= 4;
@@ -107,11 +107,17 @@
       }
       if (this.rightKey.isDown)
       {
-        this.player.frame = 0;
+        this.player.frame = 3;
           if(this.player.x<570)
           {
              this.player.x += 4;
           }
+      }
+      if (this.rightKey.isDown && this.upKey.isDown){
+        this.player.frame = 4;
+      }
+      if (this.leftKey.isDown && this.upKey.isDown){
+        this.player.frame = 5;
       }
       if (this.spaceBar.isDown)
       {
