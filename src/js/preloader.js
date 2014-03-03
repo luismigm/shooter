@@ -30,6 +30,7 @@
       this.load.spritesheet('explosions', 'assets/explosions.png', 60, 60);
       this.load.spritesheet('highScore_button', 'assets/high_score_sprite.png', 193, 71);
       this.load.spritesheet('start_button', 'assets/start_sprite.png', 193, 71);
+      this.load.spritesheet('restart_button', 'assets/restart_sprite.png', 193, 71);
       this.load.spritesheet('credits_button', 'assets/credits_sprite.png', 193, 71);
       this.load.spritesheet('options_button', 'assets/options_sprite.png', 193, 71);
       this.load.spritesheet('return_button', 'assets/back_arrow.png', 193, 71);
