@@ -21,7 +21,7 @@
       this.load.image('high_score_background', 'assets/high_score_background.png');
       this.load.image('credits_background', 'assets/credits_background.png');
       this.load.image('bullet', 'assets/bullet.png');
-      this.load.image('nave2', 'assets/nave.png');
+      this.load.image('live', 'assets/live.png');
       this.load.image('alien', 'assets/alien.png');
       this.load.image('alien2', 'assets/alien2.png');
       this.load.spritesheet('level_icon', 'assets/easy_hard_icon.png', 93, 71);

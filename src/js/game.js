@@ -30,7 +30,7 @@
 
       this.map = this.add.tileSprite(0, 0, 600, 2835, 'map_background');  
 
-      this.player = this.add.sprite(x, y, 'nave');
+      this.player = this.add.sprite(x, 700, 'nave');
       this.player.frame = 0;
       this.player.health = 2;
 
@@ -48,7 +48,7 @@
     //  Our bullet group
      this.bullets = this.add.group();
     this.bullets.createMultiple(5, 'bullet');
-    this.bullets.setAll('anchor.x', 0.5);
+    this.bullets.setAll('anchor.x', 0.1);
     this.bullets.setAll('anchor.y', 1);
     this.bullets.setAll('outOfBoundsKill', true);
 
@@ -62,7 +62,7 @@
 
      for (var i = 0; i < 3; i++) 
     {
-        this.ship = this.lives.create(470 + (45 * i), 45, 'nave2');
+        this.ship = this.lives.create(470 + (45 * i), 45, 'live');
         this.ship.anchor.setTo(0.5, 0.5);
         this.ship.angle = 90;
         this.ship.alpha = 0.7;
