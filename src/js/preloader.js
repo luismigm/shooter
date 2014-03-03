@@ -24,6 +24,8 @@
       this.load.image('nave2', 'assets/nave.png');
       this.load.image('alien', 'assets/alien.png');
       this.load.image('alien2', 'assets/alien2.png');
+      this.load.spritesheet('level_icon', 'assets/easy_hard_icon.png', 93, 71);
+      this.load.spritesheet('sound_icon', 'assets/sound_on_off.png', 88, 91);
       this.load.spritesheet('nave', 'assets/nave.png', 45, 64);
       this.load.spritesheet('nodriza', 'assets/nodriza.png', 118, 138);
       this.load.spritesheet('asteroids', 'assets/asteroids.png', 80, 80);
@@ -36,6 +38,12 @@
       this.load.spritesheet('options_button', 'assets/options_sprite.png', 193, 71);
       this.load.spritesheet('return_button', 'assets/back_arrow.png', 193, 71);
       this.load.spritesheet('newGame_button', 'assets/new_game_sprite.png', 193, 71);
+      this.load.spritesheet('yes_button', 'assets/yes_sprite.png', 193, 71);
+      this.load.spritesheet('hard_button', 'assets/hard_sprite.png', 193, 71);
+      this.load.spritesheet('no_button', 'assets/no_sprite.png', 193, 71);
+      this.load.spritesheet('easy_button', 'assets/easy_sprite.png', 193, 71);
+   
+      
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
     },
 
