@@ -20,7 +20,7 @@
       this.titleTxt.anchor.setTo(0.5, 0.5);
 
       this.myButton = this.add.button(100, 575, 'restart_button', function() { this.game.state.start('game') }, this, 1, 0, 0);
-      this.myButton = this.add.button(300, 575, 'return_button', function() { this.game.state.start('menu') }, this, 1, 0, 0);
+      this.myButton = this.add.button(300, 575, 'menu_button', function() { this.game.state.start('menu') }, this, 1, 0, 0);
     },
 
     update: function () {
