@@ -127,13 +127,13 @@
       }
 
       this.enemigos = this.aliens.getFirstExists(false);
-      if (this.enemigos && this.timeBoss + 1000 > this.game.time.now)
+      if (this.enemigos && this.timeBoss + 10000 > this.game.time.now)
       {
                 this.enemigos.reset(Math.random()*600, -30);
                 this.physics.moveToObject(this.enemigos,this.player,200);
 
       }
-      if((this.timeBoss + 1000 < this.game.time.now) && this.boss == false)
+      if((this.timeBoss + 10000 < this.game.time.now) && this.boss == false)
       {
           this.boss = this.add.sprite((this.game.width / 2)-50, -300, 'nodriza');
           this.boss.health = 50;
