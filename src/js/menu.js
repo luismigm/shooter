@@ -6,7 +6,7 @@
     this.lineTxt = null;
     this.startButton=null;
     this.principal_background = null;
-
+    this.music_sound = true;
   }
 
   Menu.prototype = {
@@ -34,9 +34,18 @@
       //this.input.onDown.add(this.onDown, this);
       this.startButton = this.add.button(200, 575, 'credits_button', function() { this.game.state.start('credits') }, this, 1, 0, 0);
       
+      if(this.music_sound === true) {
+        this.music = this.game.add.audio('sound', 1, true);
+        this.music.play('', 0, 1, true);
+        this.music_sound = false;
+      }
+      
+
+
     },
 
     update: function () {
+      
 
     },
 

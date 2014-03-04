@@ -90,6 +90,7 @@
     },
 
     update: function () {
+      
 
 //Background 
       this.map.tilePosition.y += 5;

@@ -43,7 +43,8 @@
       this.load.spritesheet('hard_button', 'assets/hard_sprite.png', 193, 71);
       this.load.spritesheet('no_button', 'assets/no_sprite.png', 193, 71);
       this.load.spritesheet('easy_button', 'assets/easy_sprite.png', 193, 71);
-   
+      
+      this.game.load.audio('audio', ['assets/sound.mp3', 'assets/sound.ogg']); //Audio files
       
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
     },
