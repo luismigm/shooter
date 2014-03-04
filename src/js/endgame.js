@@ -16,8 +16,15 @@
 
       this.endgame_background = this.add.sprite(0, 0, 'endgame_background');
 
-      this.titleTxt = this.add.bitmapText(x, y, 'EndGame', {font: '16px minecraftia', align: 'center'});
+      this.titleTxt = this.add.bitmapText(x, y, window.shooter.myGlobal.score.toString(), {font: '16px minecraftia', align: 'center'});
       this.titleTxt.anchor.setTo(0.5, 0.5);
+      if(window.shooter.myGlobal.score > window.shooter.myGlobal.highScore[2])
+      {
+          window.shooter.myGlobal.highScore[2] = window.shooter.myGlobal.score;
+      }
+        window.shooter.myGlobal.highScore.sort();
+          window.shooter.myGlobal.highScore.reverse();
+          window.shooter.myGlobal.score = 0;
 
       this.myButton = this.add.button(100, 575, 'restart_button', function() { this.game.state.start('game') }, this, 1, 0, 0);
       this.myButton = this.add.button(300, 575, 'menu_button', function() { this.game.state.start('menu') }, this, 1, 0, 0);

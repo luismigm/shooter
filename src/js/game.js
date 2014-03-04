@@ -16,11 +16,11 @@
     this.enemigos = null;
     this.moveEnemys = null;
     this.numberLives = 3;
-    this.score = 0;
+    this.score = null;
     this.scoreText = null;
     this.lives = null;
     this.ship = null;
-    this.timeBoss = 0;
+    this.timeBoss = null;
     this.boss = false;
     this.bossBullets = null;
     this.difficulty= null;
@@ -35,11 +35,16 @@
         , y = 500;
 
       this.map = this.add.tileSprite(0, 0, 600, 2835, 'map_background');  
-
+      this.timeBoss = 0;
+      this.score = 0;
+      this.timeBoss = 0;
+    this.boss = false;
       this.player = this.add.sprite(x, 700, 'nave');
       this.player.frame = 0;
       this.player.health = 2;
       this.difficulty = window.shooter.myGlobal.difficulty;
+      
+
 
       
       //  In this example we'll create 4 specific keys (up, down, left, right) and monitor them in our update function
@@ -158,7 +163,15 @@
 
 
       this.physics.overlap(this.bullets, this.aliens, function (bullet, enemigos) {  bullet.kill(); enemigos.kill(); this.score += 10; this.scoreText.content = 'SCORE: ' + this.score;}, null, this);
-      this.physics.overlap(this.boss, this.bullets, function (boss, bullet) {  bullet.kill(); this.boss.health--;   if (this.boss.health < 0)  {    this.game.state.start('endGame');  } }, null, this);
+      
+      this.physics.overlap(this.boss, this.bullets, function (boss, bullet) {  
+        bullet.kill(); this.boss.health--;   
+        if (this.boss.health < 0)  {    
+          this.boss = false; this.score += 1000; 
+          window.shooter.myGlobal.score = this.score; 
+          this.game.state.start('endGame');
+            } }, null, this);
+
       this.physics.overlap(this.player, this.aliens, function (player, enemy) {  
         enemy.kill(); 
         var live = this.lives.getFirstAlive();
@@ -169,6 +182,7 @@
         }
         if (this.player.health < 0)
         {
+          window.shooter.myGlobal.score = this.score;
             this.game.state.start('endGame');
         }
       }, null, this);
@@ -183,10 +197,8 @@ if (this.boss != false)
           if (this.bossFire)
           {
               //  And fire it
-              //alert ("hola");
               this.bossFire.reset(this.boss.x+15, this.boss.y+30);
               this.physics.moveToObject(this.bossFire,this.player,200 * this.difficulty);
-              //this.bossFire.body.velocity.y = 400;
               this.bossBulletTime = this.game.time.now + 400;
           }
       }
@@ -201,10 +213,10 @@ this.physics.overlap(this.player, this.bossBullets, function (player, enemy) {
         }
         if (this.player.health < 0)
         {
+          window.shooter.myGlobal.score = this.score;
             this.game.state.start('endGame');
         }
       }, null, this);
-
     },
 
    fireBullet: function () 
