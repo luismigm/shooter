@@ -47,7 +47,8 @@
       this.load.spritesheet('easy_button', 'assets/easy_sprite.png', 193, 71);
       
       this.game.load.audio('audio', ['assets/sound.mp3', 'assets/sound.ogg']); //Audio files
-      
+      this.game.load.audio('sound_blast', 'assets/sound_blast.mp3');
+      this.game.load.audio('sound_explosion', 'assets/sound_explosion.mp3');
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
     },
 
