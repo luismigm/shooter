@@ -6,7 +6,7 @@
     this.lineTxt = null;
     this.startButton=null;
     this.principal_background = null;
-    this.music_sound = true;
+    this.musicSound = true;
   }
 
   Menu.prototype = {
@@ -18,12 +18,7 @@
       
       this.principal_background = this.add.sprite(0, 0, 'principal_background');
 
-      //Tittle with text
-      /*
-      this.titleTxt = this.add.bitmapText(x, 100, 'Alien Invasion', {font: '30px minecraftia', align: 'center'});
-      this.titleTxt.anchor.setTo(0.5, 0.5);*/
-/*
-      this.startButton = this.add.button(200, 275, 'start_button', function() { this.game.state.start('start') }, this, 0, 1, 0);*/
+
 
       this.myButton = this.add.button(200, 275, 'newGame_button', function() { this.game.state.start('game') }, this, 1, 0, 0);
 
@@ -34,10 +29,11 @@
       //this.input.onDown.add(this.onDown, this);
       this.startButton = this.add.button(200, 575, 'credits_button', function() { this.game.state.start('credits') }, this, 1, 0, 0);
       
-      if(this.music_sound === true) {
-        this.music = this.game.add.audio('sound', 1, true);
+      if(this.musicSound == true) 
+      {
+        this.music = this.game.add.audio('audio', 1, true);
         this.music.play('', 0, 1, true);
-        this.music_sound = false;
+        this.musicSound = false;
       }
       
 
