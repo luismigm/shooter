@@ -22,6 +22,8 @@
     this.ship = null;
     this.timeBoss = 0;
     this.boss = false;
+    this.bossBullets = null;
+    this.difficulty= null;
   }
 
   Game.prototype = {
@@ -35,7 +37,8 @@
       this.player = this.add.sprite(x, 700, 'nave');
       this.player.frame = 0;
       this.player.health = 2;
-
+      this.difficulty = window.shooter.myGlobal.difficulty;
+      alert (this.difficulty);
       //this.input.onDown.add(this.onInputDown, this);
       
       //  In this example we'll create 4 specific keys (up, down, left, right) and monitor them in our update function
@@ -53,6 +56,12 @@
     this.bullets.setAll('anchor.x', 0.1);
     this.bullets.setAll('anchor.y', 1);
     this.bullets.setAll('outOfBoundsKill', true);
+
+    /* this.bossBullets = this.add.group();
+    this.bossBullets.createMultiple(5, 'bullet');
+    this.bossBullets.setAll('anchor.x', 0.1);
+    this.bossBullets.setAll('anchor.y', 1);
+    this.sossBullets.setAll('outOfBoundsKill', true);*/
 
     this.aliens = this.add.group();
     this.aliens.createMultiple(7, 'asteroids');

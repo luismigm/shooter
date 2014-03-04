@@ -22,16 +22,16 @@
 
       this.myButton = this.add.button(60, 310, 'easy_button', function() { 
         this.level = this.add.sprite(480, 310, 'level_icon');
-        window.shooter.myGlobal.dificult=1;
-          //alert(window.shooter.myGlobal.dificult);
+        window.shooter.myGlobal.difficulty=1;
+         //alert(window.shooter.myGlobal.difficulty);
         this.level.frame = 0; 
       }, this, 1, 0, 0);
       
 
       this.myButton = this.add.button(260, 310, 'hard_button', function() { 
         this.level = this.add.sprite(480, 310, 'level_icon');
-        window.shooter.myGlobal.dificult=2;
-         //alert(window.shooter.myGlobal.dificult);
+        window.shooter.myGlobal.difficulty=2;
+         //alert(window.shooter.myGlobal.difficulty);
         this.level.frame = 1;
       }, this, 1, 0, 0);
 
