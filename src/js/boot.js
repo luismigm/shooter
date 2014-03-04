@@ -12,7 +12,7 @@
     create: function () {
       this.game.input.maxPointers = 1;
       // this.game.stage.disableVisibilityChange = true;
-      window['shooter'].myGlobal = { variable1 : 9, variable2 : "hola" };
+      window['shooter'].myGlobal = { sound : 1, dificult: 1, highScore: new Array(0,0,0) };
 
       if (this.game.device.desktop) {
         this.game.stage.scale.pageAlignHorizontally = true;
