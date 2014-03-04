@@ -29,12 +29,6 @@
       //this.input.onDown.add(this.onDown, this);
       this.startButton = this.add.button(200, 575, 'credits_button', function() { this.game.state.start('credits') }, this, 1, 0, 0);
       
-      if(this.musicSound == true) 
-      {
-        this.music = this.game.add.audio('audio', 1, true);
-        this.music.play('', 0, 1, true);
-        this.musicSound = false;
-      }
       
 
 

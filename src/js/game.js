@@ -26,6 +26,9 @@
     this.difficulty= null;
      this.bossFire = null;
      this.bossBulletTime = 0;
+     this.timeGame = 0; 
+     this.powerUp = null;
+     this.ufo = null;
   }
 
   Game.prototype = {
@@ -33,7 +36,7 @@
     create: function () {
       var x = this.game.width / 2
         , y = 500;
-
+      this.ufo = this.add.sprite(0, 0, 'bullet2');
       this.map = this.add.tileSprite(0, 0, 600, 2835, 'map_background');  
       this.timeBoss = 0;
       this.score = 0;
@@ -43,6 +46,7 @@
       this.player.frame = 0;
       this.player.health = 2;
       this.difficulty = window.shooter.myGlobal.difficulty;
+      this.gameTime = this.game.time.now + 15000;
       
 
 
@@ -86,6 +90,7 @@
     }
 
       this.timeBoss = this.game.time.now;
+      this.Game = this.game.time.now;
 
     },
 
@@ -149,19 +154,29 @@
                 this.physics.moveToObject(this.enemigos,this.player,200 * this.difficulty);
 
       }
-      if((this.timeBoss + 10000 < this.game.time.now) && this.boss == false)
+      if((this.timeBoss + 20000 < this.game.time.now) && this.boss == false)
       {
           this.boss = this.add.sprite((this.game.width / 2)-50, -300, 'nodriza');
           this.boss.health = 50;
-          this.boss.body.velocity.y=100;
+          this.boss.body.velocity.y = 100;
           //alert(this.boss.health);
 
       }
+      if (this.game.time.now > this.gameTime)
+      {  
+          this.powerUp = this.add.sprite(this.game.width /2, 0, 'powerUp');
+          this.powerUp.body.velocity.y = 100;
+          this.gameTime = this.game.time.now + 50000;
+      }
+      else
+      {
+        this.timeGame = this.game.time.now;
+      }
       if(this.boss.y > 150)
       {
-        this.boss.body.velocity.y=0;
+        this.boss.body.velocity.y = 0;
       }
-
+      this.physics.overlap(this.player, this.powerUp, function (player, powerUp) {  powerUp.kill(); this.bullets.add(this.ufo);}, null, this);
 
       this.physics.overlap(this.bullets, this.aliens, function (bullet, enemigos) {  bullet.kill(); enemigos.kill(); this.score += 10; this.scoreText.content = 'SCORE: ' + this.score;}, null, this);
       
@@ -189,7 +204,6 @@
       }, null, this);
 if (this.boss != false)
 {
-  //alert ("hola");
       //fire boss
       if (this.game.time.now > this.bossBulletTime)
       {  
@@ -204,6 +218,7 @@ if (this.boss != false)
           }
       }
 }
+
 this.physics.overlap(this.player, this.bossBullets, function (player, enemy) {  
         enemy.kill(); 
         var live = this.lives.getFirstAlive();
