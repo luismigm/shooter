@@ -21,6 +21,7 @@
       this.load.image('high_score_background', 'assets/high_score_background.png');
       this.load.image('credits_background', 'assets/credits_background.png');
       this.load.image('bullet', 'assets/bullet.png');
+      this.load.image('bullet_power', 'assets/bullet_power.png');
       this.load.image('bossBullets', 'assets/nodriza_bullet_small.png');
       this.load.image('live', 'assets/live.png');
       this.load.image('powerUp', 'assets/power_up.png');
