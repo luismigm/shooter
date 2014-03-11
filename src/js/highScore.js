@@ -4,7 +4,6 @@
   function HighScore() {
     this.titleTxt = null;
     this.startTxt = null;
-    this.array = "hola";
   }
 
   HighScore.prototype = {
@@ -19,14 +18,12 @@
       this.titleTxt = this.add.bitmapText(x, y, 'High Score', {font: '16px minecraftia', align: 'center'});
       this.titleTxt.anchor.setTo(0.5, 0.5);
 
-      
-      
-
+      //mostramos el array de los high score
       for (var i=0; i < window.shooter.myGlobal.highScore.length; i++)
       {
           y+=30;
           this.titleTxt = this.add.bitmapText(x, y, window.shooter.myGlobal.highScore[i].toString(), {font: '14px minecraftia', align: 'center'});
-      this.titleTxt.anchor.setTo(0.5, 0.5);
+          this.titleTxt.anchor.setTo(0.5, 0.5);
       }
 
       this.myButton = this.add.button(200, 575, 'return_button', function() { this.game.state.start('menu') }, this, 1, 0, 0);

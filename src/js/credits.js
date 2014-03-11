@@ -22,7 +22,7 @@
       this.titleTxt.anchor.setTo(0.5, 0.5);
 
       y = y + this.titleTxt.height + 5;
-      this.startTxt = this.add.bitmapText(x, y, 'START', {font: '12px minecraftia', align: 'center'});
+      this.startTxt = this.add.bitmapText(x, y, 'Luis Miguel García y César Gil', {font: '12px minecraftia', align: 'center'});
       this.startTxt.anchor.setTo(0.5, 0.5);
 
       y = y + this.titleTxt.height + 30;

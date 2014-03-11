@@ -13,7 +13,7 @@
     this.aliens = null;
     this.bulletTime = 0;
     this.aliens = null;
-    this.enemigos = null;
+    this.enemys = null;
     this.moveEnemys = null;
     this.numberLives = 3;
     this.score = null;
@@ -24,63 +24,52 @@
     this.boss = false;
     this.bossBullets = null;
     this.difficulty= null;
-     this.bossFire = null;
-     this.bossBulletTime = 0;
-     this.timeGame = 0; 
-     this.powerUp = null;
-     this.ufo = null;
+    this.bossFire = null;
+    this.bossBulletTime = 0;
+
   }
 
   Game.prototype = {
 
     create: function () {
-      var x = this.game.width / 2
-        , y = 500;
-      this.ufo = this.add.sprite(0, 0, 'bullet2');
-      this.map = this.add.tileSprite(0, 0, 600, 2835, 'map_background');  
-      this.timeBoss = 0;
-      this.score = 0;
-      this.timeBoss = 0;
+    var x = this.game.width / 2
+     , y = 500;
+    this.map = this.add.tileSprite(0, 0, 600, 2835, 'map_background');  
+    this.timeBoss = 0;
+    this.score = 0;
+    this.timeBoss = 0;
     this.boss = false;
-      this.player = this.add.sprite(x, 700, 'nave');
-      this.player.frame = 0;
-      this.player.health = 2;
-      this.difficulty = window.shooter.myGlobal.difficulty;
-      this.gameTime = this.game.time.now + 15000;
-      
+    this.player = this.add.sprite(x, 700, 'nave');
+    this.player.frame = 0;
+    this.player.health = 2;
+    this.difficulty = window.shooter.myGlobal.difficulty;
 
-
-      
-      //  In this example we'll create 4 specific keys (up, down, left, right) and monitor them in our update function
-
+    //asignación de teclas      
     this.upKey = this.input.keyboard.addKey(Phaser.Keyboard.UP);
     this.downKey = this.input.keyboard.addKey(Phaser.Keyboard.DOWN);
     this.leftKey = this.input.keyboard.addKey(Phaser.Keyboard.LEFT);
     this.rightKey = this.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
     this.spaceBar = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-    //balas
-    //  Our bullet group
+    //grupo de disparos de la nave
      this.bullets = this.add.group();
     this.bullets.createMultiple(5, 'bullet');
     this.bullets.setAll('anchor.x', 0.1);
     this.bullets.setAll('anchor.y', 1);
     this.bullets.setAll('outOfBoundsKill', true);
-
+    //grupo de disparos del jefe
     this.bossBullets = this.add.group();
     this.bossBullets.createMultiple(7* this.difficulty, 'bossBullets');
-    /*this.bossBullets.setAll('anchor.x', 0.1);
-    this.bossBullets.setAll('anchor.y', 1);*/
     this.bossBullets.setAll('outOfBoundsKill', true);
-
+    //grupo de enemigos
     this.aliens = this.add.group();
     this.aliens.createMultiple(7 * this.difficulty, 'asteroids');
     this.aliens.setAll('outOfBoundsKill', true);
-
+    //texto para el score
     this.scoreText = this.add.text(32, 32, 'SCORE: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
     this.livesText = this.add.text(400, 32, 'lives: ', { font: "20px Arial", fill: "#ffffff", align: "left" });
     this.lives = this.add.group();
-
+    //creamos los sprites de las vidas
      for (var i = 0; i < 3; i++) 
     {
         this.ship = this.lives.create(470 + (45 * i), 45, 'live');
@@ -90,16 +79,15 @@
     }
 
       this.timeBoss = this.game.time.now;
-      this.Game = this.game.time.now;
 
     },
 
     update: function () {
       
 
-//Background 
+//fondo 
       this.map.tilePosition.y += 5;
-
+//movimiento nave
      if (this.upKey.isDown)
       {
         this.player.frame = 1;
@@ -142,52 +130,44 @@
       if (this.leftKey.isDown && this.upKey.isDown){
         this.player.frame = 5;
       }
+      //disparo
       if (this.spaceBar.isDown)
       {
          this.fireBullet();
       }
 
-      this.enemigos = this.aliens.getFirstExists(false);
-      if (this.enemigos && this.timeBoss + 10000 > this.game.time.now)
+      //creamos los enemigos
+      this.enemys = this.aliens.getFirstExists(false);
+      if (this.enemys && this.timeBoss + 18000 > this.game.time.now)
       {
-                this.enemigos.reset(Math.random()*600, -30);
-                this.physics.moveToObject(this.enemigos,this.player,200 * this.difficulty);
+        this.enemys.reset(Math.random()*600, -30);
+        this.physics.moveToObject(this.enemys,this.player,200 * this.difficulty);
 
       }
-      if((this.timeBoss + 20000 < this.game.time.now) && this.boss == false)
+      //creamos el jefe final 
+      if((this.timeBoss + 22000 < this.game.time.now) && this.boss == false)
       {
           this.boss = this.add.sprite((this.game.width / 2)-50, -300, 'nodriza');
-          this.boss.health = 50;
+          this.boss.health = 20 * this.difficulty;
           this.boss.body.velocity.y = 100;
-          //alert(this.boss.health);
-
-      }
-      if (this.game.time.now > this.gameTime)
-      {  
-          this.powerUp = this.add.sprite(this.game.width /2, 0, 'powerUp');
-          this.powerUp.body.velocity.y = 100;
-          this.gameTime = this.game.time.now + 50000;
-      }
-      else
-      {
-        this.timeGame = this.game.time.now;
       }
       if(this.boss.y > 150)
       {
         this.boss.body.velocity.y = 0;
       }
-      this.physics.overlap(this.player, this.powerUp, function (player, powerUp) {  powerUp.kill(); this.bullets.add(this.ufo);}, null, this);
 
-      this.physics.overlap(this.bullets, this.aliens, function (bullet, enemigos) {  bullet.kill(); enemigos.kill(); this.score += 10; this.scoreText.content = 'SCORE: ' + this.score;}, null, this);
-      
+      //choque entre enemigos y disparos
+      this.physics.overlap(this.bullets, this.aliens, function (bullet, enemys) {  bullet.kill(); enemys.kill(); this.score += 10; this.scoreText.content = 'SCORE: ' + this.score;}, null, this);
+      //choque entre jefe y disparos
       this.physics.overlap(this.boss, this.bullets, function (boss, bullet) {  
         bullet.kill(); this.boss.health--;   
-        if (this.boss.health < 0)  {    
+        if (this.boss.health < 0)  
+        {    
           this.boss = false; this.score += 1000; 
           window.shooter.myGlobal.score = this.score; 
           this.game.state.start('endGame');
-            } }, null, this);
-
+        } }, null, this);
+      //choque entre nave y enemigos
       this.physics.overlap(this.player, this.aliens, function (player, enemy) {  
         enemy.kill(); 
         var live = this.lives.getFirstAlive();
@@ -202,39 +182,39 @@
             this.game.state.start('endGame');
         }
       }, null, this);
-if (this.boss != false)
-{
-      //fire boss
-      if (this.game.time.now > this.bossBulletTime)
-      {  
-      this.bossFire = this.bossBullets.getFirstExists(false);
+      //disparos del jefe si ya se ha creado
+      if (this.boss != false)
+      {
+        if (this.game.time.now > this.bossBulletTime)
+        {  
+        this.bossFire = this.bossBullets.getFirstExists(false);
 
-          if (this.bossFire)
-          {
-              //  And fire it
-              this.bossFire.reset(this.boss.x+15, this.boss.y+30);
-              this.physics.moveToObject(this.bossFire,this.player,200 * this.difficulty);
-              this.bossBulletTime = this.game.time.now + 400;
-          }
+            if (this.bossFire)
+            {
+                //  And fire it
+                this.bossFire.reset(this.boss.x+15, this.boss.y+30);
+                this.physics.moveToObject(this.bossFire,this.player,200 * this.difficulty);
+                this.bossBulletTime = this.game.time.now + 400;
+            }
+        }
       }
-}
-
-this.physics.overlap(this.player, this.bossBullets, function (player, enemy) {  
-        enemy.kill(); 
-        var live = this.lives.getFirstAlive();
-        if (live)
-        {
-          live.kill();
-          this.player.damage(1);
-        }
-        if (this.player.health < 0)
-        {
-          window.shooter.myGlobal.score = this.score;
-            this.game.state.start('endGame');
-        }
+      //choque entre disparos del jefe y nave
+      this.physics.overlap(this.player, this.bossBullets, function (player, enemy) {  
+      enemy.kill(); 
+      var live = this.lives.getFirstAlive();
+      if (live)
+      {
+        live.kill();
+        this.player.damage(1);
+      }
+      if (this.player.health < 0)
+      {
+        window.shooter.myGlobal.score = this.score;
+        this.game.state.start('endGame');
+      }
       }, null, this);
     },
-
+    //funcion para crear disparos de la nave
    fireBullet: function () 
    {
         //  To avoid them being allowed to fire too fast we set a time limit
@@ -249,7 +229,10 @@ this.physics.overlap(this.player, this.bossBullets, function (player, enemy) {
               this.bullet.reset(this.player.x+15, this.player.y);
               this.bullet.body.velocity.y = -400;
               this.bulletTime = this.game.time.now + 200;
+              var sound = this.game.add.audio('sound_blast');
+              sound.play();
           }
+
       } 
     }
 
